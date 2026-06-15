@@ -1,34 +1,33 @@
 # RandWise
 
-A modern Android budgeting and expense management application built using Kotlin, MVVM Architecture, Room Database, and Material Design 3.
+A modern Android budgeting and expense management application built with Kotlin, MVVM Architecture, Room Database, Navigation Components, ViewBinding, and Material Design 3.
 
-## Overview
-
-RandWise is a premium personal finance application designed to help users manage expenses, monitor spending habits, achieve savings goals, and improve budgeting discipline.
-
-Unlike traditional student budgeting projects, RandWise focuses on a polished fintech-inspired experience with intuitive navigation, modern analytics, achievement systems, and offline-first functionality.
+RandWise helps users track expenses, manage budgets, monitor savings goals, analyze spending habits, and build healthier financial behaviours through powerful analytics and achievement-based motivation. The application is designed with a premium fintech-inspired user experience and operates completely offline, ensuring users retain full ownership of their financial data.
 
 ---
 
 ## Features
 
-### User Authentication
+### Authentication & User Management
 
 * User Registration
 * Secure Login
+* Logout Functionality
+* Remember Me Support
 * Session Persistence
-* Remember Me Functionality
 * Multi-User Support
+* User-Specific Financial Records
+* Input Validation
 
 ### Dashboard
 
 * Personalized Welcome Card
-* Monthly Budget Overview
+* Budget Overview
 * Budget Remaining Indicator
-* Spending Summary
-* Quick Actions
-* Recent Expenses
+* Monthly Spending Summary
+* Recent Expenses Feed
 * Budget Health Score
+* Quick Actions
 * Analytics Preview
 
 ### Expense Management
@@ -37,71 +36,106 @@ Unlike traditional student budgeting projects, RandWise focuses on a polished fi
 * Edit Expenses
 * Delete Expenses
 * Receipt Attachments
+* Receipt Preview
+* Date & Time Selection
 * Category Assignment
-* Date & Time Tracking
-* Validation Handling
+* Expense Notes
+* Transaction History
+* Input Validation
 
-### Categories
+### Category Management
 
 * Create Categories
 * Edit Categories
 * Delete Categories
-* Custom Spending Limits
+* Custom Category Colors
+* Category Icons
+* Category Spending Limits
 * Category Statistics
-* Visual Category Identification
 
-### Analytics
-
-* Pie Charts
-* Line Charts
-* Bar Charts
-* Spending Trends
-* Budget Trends
-* Category Performance Analysis
-
-### Goals
+### Goals & Savings Tracking
 
 * Monthly Budget Goals
-* Savings Targets
-* Category Spending Limits
+* Savings Goals
+* Category Spending Targets
 * Progress Tracking
-* Budget Health Monitoring
+* Goal Completion Monitoring
+* Budget Health Evaluation
 
-### Achievements
+### Analytics & Insights
+
+* Pie Charts
+* Bar Charts
+* Line Charts
+* Spending Distribution Analysis
+* Monthly Spending Trends
+* Category Trend Analysis
+* Budget Performance Tracking
+* Financial Insights
+* Empty-State Analytics Handling
+
+### Achievement System
 
 * First Expense
 * 7-Day Streak
 * 30-Day Streak
+* 100 Expenses
+* Receipt Collector
 * Budget Master
 * Savings Star
 * Category Champion
-* Receipt Collector
+* Achievement Progress Tracking
+* Unlock History
 
 ### Settings
 
-* User Profile
-* Theme Management
+* Profile Management
+* Theme Preferences
 * Data Export
 * Data Reset
 * Application Information
 
 ---
 
+## Highlights
+
+* Offline-First Design
+* Multi-User Support
+* Budget Health Score
+* Receipt Management
+* Advanced Financial Analytics
+* Achievement & Gamification System
+* Category Spending Limits
+* Savings Goal Tracking
+* Local Data Ownership
+* Premium Fintech User Experience
+* Safe Empty-State Handling
+* Modern Android Development Practices
+
+---
+
 ## Technology Stack
 
-### Frontend
+### Language
 
 * Kotlin
+
+### UI
+
 * XML Layouts
-* Material Design 3
 * ViewBinding
+* Material Design 3
 
 ### Architecture
 
-* MVVM
+* MVVM (Model-View-ViewModel)
 * Repository Pattern
 * LiveData
+
+### Navigation
+
 * Navigation Component
+* Safe Args
 
 ### Database
 
@@ -113,120 +147,221 @@ Unlike traditional student budgeting projects, RandWise focuses on a polished fi
 
 * MPAndroidChart
 
+### Testing
+
+* Unit Testing
+* UI Testing
+* Database Testing
+* Repository Testing
+* Navigation Testing
+
 ---
 
 ## Architecture
 
-MVVM Architecture
+RandWise follows the MVVM architectural pattern to ensure maintainability, scalability, and separation of concerns.
 
-UI Layer
-→ ViewModels
-→ Repository Layer
-→ Room Database
+```text
+UI (Activities / Fragments)
+            │
+            ▼
+       ViewModels
+            │
+            ▼
+      Repositories
+            │
+            ▼
+      Room Database
+            │
+     DAOs & Entities
+```
 
-Benefits:
+### Core Layers
 
-* Separation of Concerns
-* Easier Testing
-* Scalability
-* Maintainability
+#### Presentation Layer
+
+Responsible for:
+
+* User Interface
+* Navigation
+* User Interaction
+
+#### Business Logic Layer
+
+Responsible for:
+
+* ViewModels
+* State Management
+* Validation
+* Data Processing
+
+#### Data Layer
+
+Responsible for:
+
+* Repositories
+* Room Database
+* DAOs
+* Local Persistence
 
 ---
 
-## Database Entities
+## Database Structure
 
-* User
-* Expense
-* Category
-* BudgetGoal
-* CategoryLimit
-* Achievement
-* UserSession
-* Settings
+The application stores data locally using Room Database.
+
+### Entities
+
+| Entity        | Purpose                            |
+| ------------- | ---------------------------------- |
+| User          | Stores account information         |
+| Expense       | Stores expense transactions        |
+| Category      | Stores spending categories         |
+| BudgetGoal    | Stores savings and budgeting goals |
+| CategoryLimit | Stores category spending limits    |
+| Achievement   | Stores achievement progress        |
+| UserSession   | Stores login session information   |
+| Settings      | Stores user preferences            |
 
 ---
 
-## Application Modules
+## Project Structure
+
+```text
+com.randwise.app
+
+├── data
+│   ├── model
+│   ├── dao
+│   └── database
+│
+├── repository
+│
+├── viewmodel
+│
+├── ui
+│   ├── auth
+│   ├── dashboard
+│   ├── expenses
+│   ├── analytics
+│   ├── categories
+│   ├── goals
+│   ├── achievements
+│   └── settings
+│
+├── navigation
+│
+└── utils
+```
+
+---
+
+## Offline Functionality
+
+RandWise is designed to function entirely without internet access.
+
+All core features are available offline, including:
 
 * Authentication
-* Dashboard
-* Expense Management
+* Expense Tracking
+* Receipt Storage
+* Budget Management
+* Goal Tracking
 * Analytics
-* Categories
-* Goals
 * Achievements
+* Category Management
 * Settings
 
----
-
-## Offline First
-
-RandWise is designed to work completely offline.
-
-Features available without internet:
-
-* User Authentication
-* Expense Tracking
-* Analytics
-* Budget Goals
-* Achievement Tracking
-* Reporting
-
----
-
-## Screenshots
-
-Add screenshots here after application completion.
+All information is stored locally on the user's device using Room Database.
 
 ---
 
 ## Installation
 
-### Clone Repository
+### Clone the Repository
 
-git clone https://github.com/your-repository/RandWise.git
+```bash
+git clone https://github.com/yourusername/RandWise.git
+```
 
-### Open Project
+### Open the Project
 
-Open Android Studio
+1. Open Android Studio
+2. Select **Open Existing Project**
+3. Navigate to the RandWise project folder
+4. Allow Gradle Sync to complete
 
-Select:
-Open Existing Project
+### Run the Application
 
-Choose:
-RandWise
-
-### Build
-
-Build → Make Project
-
-### Run
-
-Run → Run App
+1. Connect an Android device or start an emulator
+2. Click **Run**
+3. Select the target device
+4. Launch the application
 
 ---
 
-## Requirements
+## Building the APK
 
-* Android Studio Hedgehog or newer
-* Android SDK 24+
-* Android Device or Emulator
-* Gradle 8+
+### Debug APK
+
+```text
+Build
+→ Build APK(s)
+```
+
+### Signed Release APK
+
+```text
+Build
+→ Generate Signed Bundle / APK
+```
+
+### Install Using ADB
+
+```bash
+adb install app-debug.apk
+```
+
+---
+
+## Testing
+
+The project includes:
+
+* Unit Tests
+* Database Tests
+* Repository Tests
+* Navigation Tests
+* UI Tests
+
+Testing is used to ensure application reliability, data integrity, and feature stability.
 
 ---
 
 ## Future Enhancements
 
-* Cloud Synchronization
+Planned future improvements include:
+
+* Cloud Backup & Synchronization
 * Biometric Authentication
-* AI Spending Insights
-* PDF Reports
-* Recurring Transactions
+* AI-Powered Spending Insights
+* Smart Budget Recommendations
+* PDF Report Generation
+* Recurring Transaction Support
 * Shared Family Budgets
+* Cross-Device Synchronization
 * Banking Integration
+
+---
+
+## Why RandWise?
+
+RandWise was built to demonstrate modern Android development practices while solving real-world budgeting challenges. The application combines a clean architecture, offline-first functionality, advanced analytics, goal tracking, and gamification into a single financial management platform designed to provide a professional fintech experience.
 
 ---
 
 ## License
 
-Educational and Portfolio Use.
+All rights reserved.
+
+This project is provided for educational, portfolio, and demonstration purposes.
